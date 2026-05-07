@@ -228,16 +228,6 @@
 
             alert(greeting + "\nWelcome to Swaad Recipes!\nHope you find something tasty to cook today 😊");
 
-            // visit counter using localStorage - learned this from a tutorial
-            var visits = localStorage.getItem("visitCount");
-            if (visits == null) {
-                visits = 1;
-            } else {
-                visits = parseInt(visits) + 1;
-            }
-            localStorage.setItem("visitCount", visits);
-            document.getElementById("visitBox").innerHTML = "You have visited this site " + visits + " time(s) 👀";
-        };
 
         // dark mode toggle function
         // i use localStorage so it remembers even after refresh
