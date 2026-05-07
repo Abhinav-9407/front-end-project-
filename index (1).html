@@ -228,9 +228,17 @@
 
             alert(greeting + "\nWelcome to Swaad Recipes!\nHope you find something tasty to cook today 😊");
 
+            // check dark mode preference on load
+            if (localStorage.getItem("darkMode") == "on") {
+                document.body.classList.add("dark-mode");
+                document.getElementById("darkModeBtn").innerHTML = "☀️ Light Mode";
+            }
+        }   // <-- window.onload closes HERE (this was missing before!)
+
 
         // dark mode toggle function
         // i use localStorage so it remembers even after refresh
+        // FIX: moved outside window.onload so the button can actually call it
         function toggleDarkMode() {
             var body = document.body;
             var btn = document.getElementById("darkModeBtn");
@@ -246,13 +254,8 @@
             }
         }
 
-        // check dark mode preference on load
-        if (localStorage.getItem("darkMode") == "on") {
-            document.body.classList.add("dark-mode");
-            document.getElementById("darkModeBtn").innerHTML = "☀️ Light Mode";
-        }
-
         // search function - goes through all recipe cards
+        // FIX: moved outside window.onload so the input can actually call it
         function searchRecipes() {
             var input = document.getElementById("searchInput").value.toLowerCase();
             var cards = document.getElementsByClassName("recipe-card");
@@ -277,6 +280,7 @@
         }
 
         // favourite button - toggles heart emoji
+        // FIX: moved outside window.onload so the buttons can actually call it
         function toggleFav(btn) {
             if (btn.innerHTML == "🤍") {
                 btn.innerHTML = "❤️";
